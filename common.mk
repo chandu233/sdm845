@@ -111,6 +111,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     DeviceSettings
 
+# OPScreenRecorder
+PRODUCT_PACKAGES += \
+    OPScreenRecorder
+
 # Display
 PRODUCT_PACKAGES += \
     libdisplayconfig \
