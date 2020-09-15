@@ -137,9 +137,6 @@ TARGET_USES_MKE2FS := true
 # Root
 BOARD_ROOT_EXTRA_FOLDERS := op1 op2 op_odm
 
-# Telephony
-TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
-
 # Sepolicy
 #BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/fake-sepolicy/private
