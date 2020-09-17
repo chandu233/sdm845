@@ -19,6 +19,7 @@ BOARD_VENDOR := oneplus
 COMMON_PATH := device/oneplus/sdm845-common
 
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
+BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
 # Architecture
 TARGET_ARCH := arm64
