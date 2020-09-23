@@ -18,12 +18,6 @@
     "remote"      : "github"
   },
   {
-    "repository"  : "CorvusRom-Devices/vendor_addons_oneplus_camera",
-    "target_path" : "vendor/addons/oneplus/camera"
-    "branch"      : "sdm845"
-    "remote"      : "github"  
-  },
-  {
     "repository"  : "kdrag0n/proton-clang",
     "branch"      : "master",
     "remote"      : "github",
