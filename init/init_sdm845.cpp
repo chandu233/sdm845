@@ -1,6 +1,5 @@
 /*
    Copyright (c) 2014, The Linux Foundation. All rights reserved.
-
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
    met:
@@ -13,7 +12,6 @@
     * Neither the name of The Linux Foundation nor the names of its
       contributors may be used to endorse or promote products derived
       from this software without specific prior written permission.
-
    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
@@ -31,62 +29,32 @@
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
+#include <android-base/properties.h>
 #include "property_service.h"
 #include "vendor_init.h"
-#include <android-base/properties.h>
-#include <sys/sysinfo.h>
 
 using android::init::property_set;
 
 void property_override(char const prop[], char const value[])
 {
-	prop_info *pi;
+    prop_info *pi;
 
-	pi = (prop_info *)__system_property_find(prop);
-	if (pi)
-		__system_property_update(pi, value, strlen(value));
-	else
-		__system_property_add(prop, strlen(prop), value, strlen(value));
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else
+        __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
-void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[])
+void property_override_dual(char const system_prop[], char const vendor_prop[],
+    char const value[])
 {
-	property_override(system_prop, value);
-	property_override(vendor_prop, value);
-}
-
-void load_dalvikvm_properties()
-{
-	struct sysinfo sys;
-
-	sysinfo(&sys);
-	if (sys.totalram < 7000ull * 1024 * 1024)
-	{
-		// 6GB RAM
-		property_override_dual("dalvik.vm.heapstartsize", "dalvik.vm.heapstartsize", "16m");
-		property_override_dual("dalvik.vm.heaptargetutilization", "dalvik.vm.heaptargetutilization", "0.5");
-		property_override_dual("dalvik.vm.heapmaxfree", "dalvik.vm.heapmaxfree", "32m");
-	}
-	else
-	{
-		// 8/10GB RAM
-		property_override_dual("dalvik.vm.heapstartsize", "dalvik.vm.heapstartsize", "24m");
-		property_override_dual("dalvik.vm.heaptargetutilization", "dalvik.vm.heaptargetutilization", "0.46");
-		property_override_dual("dalvik.vm.heapmaxfree", "dalvik.vm.heapmaxfree", "48m");
-	}
-
-	property_override_dual("dalvik.vm.heapgrowthlimit", "dalvik.vm.heapgrowthlimit", "256m");
-	property_override_dual("dalvik.vm.heapsize", "dalvik.vm.heapsize", "512m");
-	property_override_dual("dalvik.vm.heapminfree", "dalvik.vm.heapminfree", "8m");
+    property_override(system_prop, value);
+    property_override(vendor_prop, value);
 }
 
 void vendor_load_properties()
 {
-	// Load dalvik config
-	load_dalvikvm_properties();
-
-	// Common maintainer props
-	property_override("org.evolution.build_donate_url", "https://paypal.me/AnierinBliss");
-	property_override("org.evolution.build_maintainer", "Anierin Bliss");
-	property_override("org.evolution.build_support_url", "https://t.me/EvolutionXOnePlus");
+    // Property Overrides
+    property_override("ro.control_privapp_permissions", "log");
 }
