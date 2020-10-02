@@ -26,7 +26,7 @@ $(call inherit-product-if-exists, vendor/addons/oneplus/camera/config.mk)
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-du
+    $(LOCAL_PATH)/overlay-corvus
 
 PRODUCT_PACKAGES += \
     OnePlusIconShapeCircleOverlay \
