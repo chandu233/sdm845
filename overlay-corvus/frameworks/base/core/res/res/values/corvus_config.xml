@@ -16,53 +16,12 @@
 
     <!-- Paths to the libraries that contain device specific key handlers -->
     <string-array name="config_deviceKeyHandlerLibs" translatable="false">
-        <item>/system/priv-app/TouchGestures/TouchGestures.apk</item>
         <item>/system/priv-app/DeviceSettings/DeviceSettings.apk</item>
     </string-array>
 
     <!-- Names of the key handler classes -->
     <string-array name="config_deviceKeyHandlerClasses" translatable="false">
-        <item>com.android.touch.gestures.KeyHandler</item>
         <item>org.corvus.device.DeviceSettings.KeyHandler</item>
-    </string-array>
-
-    <!-- Whether device has physical tri state switch -->
-    <bool name="config_hasAlertSlider">true</bool>
-
-    <!-- The location of the devices physical tri state switch
-         0: Left side
-         1: Right side -->
-    <integer name="config_alertSliderLocation">1</integer>
-
-    <!-- Whether key handler sends intent when changing slider position -->
-    <string name="config_alertSliderIntent">org.corvus.device.DeviceSettings.UPDATE_SLIDER_POSITION</string>
-
-    <!-- Whether device has dash charging support -->
-    <bool name="config_hasDashCharger">true</bool>
-
-    <!-- Smart charge sysfs node and value for suspend/resume charging-->
-    <bool name="config_SmartChargingAvailable">true</bool>
-    <string name="config_SmartChargingSysfsNode" translatable="false">/sys/class/power_supply/battery/input_suspend</string>
-    <string name="config_SmartChargingSuspendValue" translatable="false">1</string>
-    <string name="config_SmartChargingResumeValue" translatable="false">0</string>
-
-    <!-- Whether to cleanup fingerprints upon connection to the daemon and when user switches -->
-    <bool name="config_cleanupUnusedFingerprints">false</bool>
-
-    <!-- Whether device ignores the RSSNR signal implementation -->
-    <bool name="config_ignoreRssnrSignalLevel">true</bool>
-
-    <!-- Whether the device supports Smart Pixels -->
-    <bool name="config_enableSmartPixels">true</bool>
-
-    <!-- Default state for LiveDisplay -->
-    <bool name="config_liveDisplayAvailable">true</bool>
-
-    <!-- BurnIn protection. This should be enabled on devices that have OLED displays -->
-    <bool name="config_enableBurnInProtection">true</bool>
-     
-    <!-- Whether device has a physical display cutout -->
-    <bool name="config_physicalDisplayCutout">true</bool>
-     
+    </string-array>     
 </resources>
 
